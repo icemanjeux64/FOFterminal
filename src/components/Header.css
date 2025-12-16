@@ -1,0 +1,76 @@
+.header-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.app-header {
+    height: 80px;
+    background: #020617;
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    /* Sticky properties removed from here are now on header-wrapper */
+}
+
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-right: 1rem;
+}
+
+@media (max-width: 768px) {
+    .app-header {
+        padding: 0 1rem;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-weight: 600;
+    font-size: 1.125rem;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: white;
+    font-size: 0.875rem;
+}
+
+.breadcrumbs {
+    display: flex;
+    gap: 0.5rem;
+    margin-left: 2rem;
+    font-size: 0.875rem;
+    opacity: 0.9;
+}
+
+.breadcrumb-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.breadcrumb-item.active {
+    background: rgba(0, 0, 0, 0.2);
+}

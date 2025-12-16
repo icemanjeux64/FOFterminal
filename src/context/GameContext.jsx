@@ -4,6 +4,11 @@ import formationsData from '../data/formations.json';
 
 const GameContext = createContext();
 
+// --------------------------------------------------------------------------
+// CLÉS DE STOCKAGE LOCAL (LOCAL STORAGE)
+// Ces clés définissent où sont sauvegardées les données dans le navigateur.
+// --------------------------------------------------------------------------
+
 // Storage Keys
 const STORAGE_KEYS = {
     PLAYERS: 'fof_players',
@@ -19,8 +24,13 @@ const STORAGE_KEYS = {
     SANCTIONS: 'fof_sanctions'
 };
 
+// --------------------------------------------------------------------------
+// PROVIDER PRINCIPAL
+// C'est le cœur de l'application qui gère toutes les données (État Global).
+// --------------------------------------------------------------------------
 export const GameProvider = ({ children }) => {
-    // --- STATE DEFINITIONS ---
+    // --- DÉFINITION DES ÉTATS (STATES) ---
+    // Chaque 'useState' correspond à une base de données locale.
     const [allPlayers, setAllPlayersData] = useState([]);
     const [trainingSessions, setTrainingSessionsData] = useState([]);
     const [missions, setMissionsData] = useState([]);
@@ -70,7 +80,11 @@ export const GameProvider = ({ children }) => {
         { id: 'def_mortier', name: 'Mortier', color: "bg-rose-900 border-rose-950 text-white", freq: "49.0", type: 'support' }
     ];
 
-    // --- INITIALIZATION ---
+    // --------------------------------------------------------------------------
+    // INITIALISATION & CHARGEMENT DES DONNÉES
+    // Au démarrage, on tente de lire le LocalStorage.
+    // Si vide, on utilise les fichiers JSON (data/...) ou les valeurs par défaut.
+    // --------------------------------------------------------------------------
     useEffect(() => {
         const loadFromStorage = (key, setter, defaultVal = null) => {
             try {
@@ -151,7 +165,11 @@ export const GameProvider = ({ children }) => {
 
     }, []);
 
-    // --- PERSISTENCE ---
+    // --------------------------------------------------------------------------
+    // PERSISTANCE AUTOMATIQUE
+    // Dès qu'une donnée change (allPlayers, missions, etc.),
+    // elle est automatiquement sauvegardée dans le navigateur.
+    // --------------------------------------------------------------------------
     useEffect(() => { localStorage.setItem(STORAGE_KEYS.PLAYERS, JSON.stringify(allPlayers)); }, [allPlayers]);
     useEffect(() => { localStorage.setItem(STORAGE_KEYS.SESSIONS, JSON.stringify(trainingSessions)); }, [trainingSessions]);
     useEffect(() => { localStorage.setItem(STORAGE_KEYS.MISSIONS, JSON.stringify(missions)); }, [missions]);
@@ -164,7 +182,10 @@ export const GameProvider = ({ children }) => {
     useEffect(() => { localStorage.setItem(STORAGE_KEYS.ARCHIVES, JSON.stringify(archives)); }, [archives]);
     useEffect(() => { localStorage.setItem(STORAGE_KEYS.SANCTIONS, JSON.stringify(sanctions)); }, [sanctions]);
 
-    // --- ACTIONS ---
+    // --------------------------------------------------------------------------
+    // ACTIONS & FONCTIONS DU JEU
+    // Methodes pour modifier les données depuis les autres pages.
+    // --------------------------------------------------------------------------
 
     const updatePlayer = (id, data) => {
         setAllPlayersData(prev => prev.map(p => String(p.id) === String(id) ? { ...p, ...data } : p));
@@ -217,7 +238,10 @@ export const GameProvider = ({ children }) => {
         setLogs(prev => [newLog, ...prev].slice(0, 100));
     };
 
-    // --- AUTH LOGIC (Local) ---
+    // --------------------------------------------------------------------------
+    // LOGIQUE D'AUTHENTIFICATION
+    // Gestion de la connexion, du rôle (Admin/Soldat) et de la session.
+    // --------------------------------------------------------------------------
     const [authenticatedUser, setAuthenticatedUser] = useState(() => {
         try {
             const saved = localStorage.getItem('fof_auth_user');
@@ -261,7 +285,10 @@ export const GameProvider = ({ children }) => {
         localStorage.removeItem('fof_auth_user');
     };
 
-    // --- STATIC DATA ---
+    // --------------------------------------------------------------------------
+    // DONNÉES STATIQUES
+    // Liste des modules de formation disponibles (Fixe).
+    // --------------------------------------------------------------------------
     const [trainingModules] = useState([
         { id: 'fmt_recrue', title: "Formation Recrue", minRank: "Recrue", slots: 10, duration: "2h00", description: "Formation initiale pour les nouvelles recrues." },
         { id: 'fmt_medic_v1', title: "Formation Medic V1 (Infirmier)", minRank: "Soldat", slots: 6, duration: "1h30", description: "Soins de base et stabilisation." },

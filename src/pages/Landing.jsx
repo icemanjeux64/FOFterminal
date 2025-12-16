@@ -15,7 +15,11 @@ export default function Landing() {
     return (
         <div className="min-h-screen bg-[#020617] text-white font-sans selection:bg-blue-500/30 overflow-x-hidden">
 
-            {/* --- NAVBAR --- */}
+            {/* --- BARRE DE NAVIGATION (NAVBAR) --- 
+                Reste transparente en haut, devient foncée au défilement.
+            */}{/* --- BARRE DE NAVIGATION (NAVBAR) --- 
+                Reste transparente en haut, devient foncée au défilement.
+            */}
             <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-slate-950/90 backdrop-blur-md border-b border-white/5 py-4' : 'bg-transparent py-6'}`}>
                 <div className="container mx-auto px-6 flex justify-between items-center">
                     <div className="flex items-center gap-3">
@@ -31,7 +35,11 @@ export default function Landing() {
                 </div>
             </nav>
 
-            {/* --- HERO SECTION --- */}
+            {/* --- SECTION HÉROS (Titre Principal) --- 
+                Contient le logo animé, le titre géant et les boutons d'action.
+            */}{/* --- SECTION HÉROS (Titre Principal) --- 
+                Contient le logo animé, le titre géant et les boutons d'action.
+            */}
             <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 pt-20">
                 {/* Backgrounds */}
                 <div className="absolute inset-0 z-0">
@@ -86,7 +94,11 @@ export default function Landing() {
                 </div>
             </section>
 
-            {/* --- VALEURS SECTION --- */}
+            {/* --- SECTION VALEURS --- 
+                Affiche les 3 piliers (Honneur, Cohésion, Excellence).
+            */}{/* --- SECTION VALEURS --- 
+                Affiche les 3 piliers (Honneur, Cohésion, Excellence).
+            */}
             <section className="py-32 relative overflow-hidden bg-[#03081c]">
                 <div className="container mx-auto px-6 relative z-10">
                     <div className="text-center mb-20">
@@ -118,7 +130,11 @@ export default function Landing() {
             </section>
 
 
-            {/* --- ABOUT SECTION --- */}
+            {/* --- SECTION À PROPOS --- 
+                Présentation de la structure et statistiques.
+            */}{/* --- SECTION À PROPOS --- 
+                Présentation de la structure et statistiques.
+            */}
             <section className="py-32 bg-slate-950 border-t border-white/5 relative">
                 <div className="absolute inset-0 overflow-hidden opacity-30 pointer-events-none">
                     <div className="absolute -top-[20%] -right-[10%] w-[40%] h-[40%] bg-blue-900/20 blur-[100px] rounded-full"></div>
@@ -158,7 +174,11 @@ export default function Landing() {
                 </div>
             </section>
 
-            {/* --- CAROUSEL SECTION --- */}
+            {/* --- GALERIE (CAROUSEL) --- 
+                Diaporama automatique des images d'opération.
+            */}{/* --- GALERIE (CAROUSEL) --- 
+                Diaporama automatique des images d'opération.
+            */}
             <section className="py-20 bg-[#020617] relative">
                 <div className="container mx-auto px-6">
                     <div className="text-center mb-12">
@@ -172,7 +192,7 @@ export default function Landing() {
                 </div>
             </section>
 
-            {/* --- FOOTER --- */}
+            {/* --- PIED DE PAGE (FOOTER) --- */}{/* --- PIED DE PAGE (FOOTER) --- */}
             <footer className="py-12 bg-[#01040f] border-t border-white/5 text-center md:text-left">
                 <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
                     <div className="flex items-center gap-3 opacity-50 hover:opacity-100 transition-opacity">
@@ -188,7 +208,8 @@ export default function Landing() {
     );
 }
 
-// --- SUB COMPONENTS ---
+// --- SOUS-COMPOSANTS ---
+// Petits morceaux d'interface réutilisés dans la page.
 
 const ValueCard = ({ icon, title, desc, color }) => (
     <div className="group p-8 bg-slate-900/40 backdrop-blur-sm border border-white/5 rounded-2xl hover:bg-slate-900/80 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden">

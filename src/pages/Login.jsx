@@ -5,7 +5,8 @@ import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const { allPlayers, login, getCredentials, createCredentials } = useGame();
-    const [step, setStep] = useState(1); // 1: Matricule, 2: Password
+    // Étapes du formulaire : 1 = Demande du matricule, 2 = Demande du mot de passe
+    const [step, setStep] = useState(1);
     const [matricule, setMatricule] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -18,14 +19,14 @@ const Login = () => {
         e.preventDefault();
         setError('');
 
-        // Find player by Matricule
+        // Recherche du joueur dans la base de données locale (Fichier JSON ou LocalStorage)
         const player = allPlayers.find(p => p.matricule?.toUpperCase() === matricule.toUpperCase());
 
         if (player) {
             setIdentifiedPlayer(player);
-            // Check if credentials exist for this player
+            // Vérifie si le joueur a déjà un mot de passe enregistré
             const hasCreds = getCredentials(player.matricule);
-            setIsFirstTime(!hasCreds);
+            setIsFirstTime(!hasCreds); // Si pas de mot de passe, c'est une première connexion
             setStep(2);
         } else {
             setError("Matricule non reconnu dans la base de données.");
@@ -37,7 +38,7 @@ const Login = () => {
         setError('');
 
         if (isFirstTime) {
-            // Create Password
+            // CRÉATION DE MOT DE PASSE (Première visite)
             if (password.length < 4) {
                 setError("Le mot de passe doit contenir au moins 4 caractères.");
                 return;
@@ -46,7 +47,7 @@ const Login = () => {
             login(identifiedPlayer);
             navigate('/app');
         } else {
-            // Verify Password
+            // VÉRIFICATION DU MOT DE PASSE (Visite classique)
             const success = login(identifiedPlayer, password);
             if (success) {
                 setIsLaunching(true);
@@ -61,7 +62,7 @@ const Login = () => {
         <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4 relative overflow-hidden">
             {isLaunching && <LoadingConsole player={identifiedPlayer} />}
 
-            {/* Background Effects */}
+            {/* Effets d'arrière-plan (Lumières bleues et rouges) */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
                 <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-900/10 rounded-full blur-[100px]"></div>
                 <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-red-900/10 rounded-full blur-[100px]"></div>

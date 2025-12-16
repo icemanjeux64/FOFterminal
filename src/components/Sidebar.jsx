@@ -6,7 +6,7 @@ import { useGame } from '../context/GameContext';
 const Sidebar = ({ onClose }) => {
     const { currentUserRole, setCurrentUserRole, isSquadLeaderRole, setIsSquadLeaderRole } = useGame();
 
-    // Default open state based on role could be nice, but keeping simple for now
+    // État d'ouverture des groupes de menu (Accordéon)
     const [openGroups, setOpenGroups] = useState({
         admin: true,
         formation: true,
@@ -46,8 +46,9 @@ const Sidebar = ({ onClose }) => {
         </div>
     );
 
-    // --- RBAC HELPER ---
-    // Returns true if the current role is allowed to see this section
+    // --- GESTION DES DROITS D'ACCÈS (RBAC) ---
+    // Renvoie 'true' si l'utilisateur a le droit de voir cette section.
+    // Les Admins voient TOUT par défaut.
     const checkAccess = (allowedRoles) => {
         if (currentUserRole === 'ADMIN') return true; // Admin sees all
         if (!allowedRoles) return false; // If no roles specified, assume restricted

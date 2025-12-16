@@ -24,7 +24,7 @@ const Header = ({ onMenuClick }) => {
         return `${dayCap} - ${time}`;
     };
 
-    // ANNIVERSARY CHECK
+    // VÉRIFICATION DES ANNIVERSAIRES (Calcul automatique)
     const celebratingPlayers = useMemo(() => {
         if (!allPlayers) return [];
         const todayDay = currentTime.getDate();
@@ -39,7 +39,7 @@ const Header = ({ onMenuClick }) => {
     }, [allPlayers, currentTime]);
 
 
-    // MODAL LOGIC
+    // GESTION DE LA MODALE ANNIVERSAIRE
     const [showAnniversaryModal, setShowAnniversaryModal] = useState(false);
 
     return (
@@ -75,7 +75,7 @@ const Header = ({ onMenuClick }) => {
                     </div>
                 </header>
 
-                {/* CENTRAL ANNIVERSARY BANNER (NOW SECOND ROW) */}
+                {/* BANNIÈRE CENTRALE D'ANNIVERSAIRE (Défilement automatique) */}
                 {celebratingPlayers.length > 0 && (
                     <div
                         onClick={() => setShowAnniversaryModal(true)}
@@ -84,7 +84,7 @@ const Header = ({ onMenuClick }) => {
                         <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-amber-900 to-transparent z-10"></div>
                         <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-amber-900 to-transparent z-10"></div>
 
-                        {/* Marquee with group-hover pause */}
+                        {/* Texte défilant (Marquee) - Se met en pause au survol */}
                         <div className="flex items-center gap-4 animate-marquee whitespace-nowrap group-hover:[animation-play-state:paused] w-full">
                             {/* Duplicated 3 times to ensure smooth loop on wide screens */}
                             {[1, 2, 3].map(i => (
@@ -105,7 +105,7 @@ const Header = ({ onMenuClick }) => {
                 )}
             </div>
 
-            {/* ANNIVERSARY MODAL */}
+            {/* MODALE DÉTAIL ANNIVERSAIRES (Popup) */}
             {showAnniversaryModal && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black  animate-in fade-in duration-200 p-4">
                     <div className="bg-slate-900 border border-amber-500 rounded-2xl max-w-2xl w-full shadow-2xl relative overflow-hidden">

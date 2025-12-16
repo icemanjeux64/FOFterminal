@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Layout from './layouts/Layout';
 import { GameProvider, useGame } from './context/GameContext';
 import Login from './pages/Login'; // Import Login
@@ -90,9 +90,9 @@ const AppRoutes = () => {
 function App() {
   return (
     <GameProvider>
-      <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <HashRouter>
         <AppRoutes />
-      </BrowserRouter>
+      </HashRouter>
     </GameProvider>
   );
 }

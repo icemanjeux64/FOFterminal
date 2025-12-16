@@ -90,7 +90,7 @@ const AppRoutes = () => {
 function App() {
   return (
     <GameProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <AppRoutes />
       </BrowserRouter>
     </GameProvider>

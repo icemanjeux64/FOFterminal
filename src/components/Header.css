@@ -56,6 +56,23 @@
     font-size: 0.875rem;
 }
 
+@media (max-width: 640px) {
+    .header-right {
+        display: none;
+        /* Hide date/time on mobile to save space */
+    }
+
+    .header-left .text-lg {
+        font-size: 0.95rem;
+        /* Smaller user name */
+    }
+
+    .header-left .text-\[10px\] {
+        font-size: 9px;
+        /* Smaller grade */
+    }
+}
+
 .breadcrumbs {
     display: flex;
     gap: 0.5rem;

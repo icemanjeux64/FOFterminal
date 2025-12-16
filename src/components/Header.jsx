@@ -50,7 +50,11 @@ const Header = ({ onMenuClick }) => {
                         <button className="menu-toggle font-display font-bold text-sm tracking-widest border border-white rounded px-3 py-1 bg-white hover:bg-white transition-colors uppercase" onClick={onMenuClick}>
                             MENU
                         </button>
-                        <div className="flex flex-col ml-4">
+
+                        {/* Mobile Logo added */}
+                        <img src="/logo.png" alt="Logo" className="h-8 w-auto mr-3 md:hidden" />
+
+                        <div className="flex flex-col ml-1 md:ml-4">
                             {authenticatedUser ? (
                                 <>
                                     <span className="text-[10px] text-gray-400 uppercase tracking-wide leading-none mb-0.5">{authenticatedUser.grade}</span>

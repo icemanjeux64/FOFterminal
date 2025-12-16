@@ -57,7 +57,7 @@ const Sidebar = ({ onClose }) => {
     return (
         <div className="sidebar flex flex-col h-full">
             <div className="sidebar-header relative shrink-0">
-                <img src="/logo.png" alt="FOF Logo" className="sidebar-logo" />
+                <img src={`${import.meta.env.BASE_URL}logo.png`} alt="FOF Logo" className="sidebar-logo" />
                 <div className="md:hidden cursor-pointer absolute right-2 top-0 px-2 py-1 rounded hover:bg-white" onClick={onClose}>
                     <span className="text-xs font-bold text-gray-400">FERMER</span>
                 </div>

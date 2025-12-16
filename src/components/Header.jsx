@@ -52,7 +52,7 @@ const Header = ({ onMenuClick }) => {
                         </button>
 
                         {/* Mobile Logo added */}
-                        <img src="/logo.png" alt="Logo" className="h-8 w-auto mr-3 md:hidden" />
+                        <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Logo" className="h-8 w-auto mr-3 md:hidden" />
 
                         <div className="flex flex-col ml-1 md:ml-4">
                             {authenticatedUser ? (

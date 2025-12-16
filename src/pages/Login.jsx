@@ -70,7 +70,7 @@ const Login = () => {
             <div className="bg-slate-900/50 backdrop-blur-xl border border-slate-700/50 p-8 rounded-3xl w-full max-w-md shadow-2xl relative z-10 animate-in fade-in zoom-in-95 duration-500">
                 <div className="text-center mb-10">
                     <div className="flex justify-center mb-6">
-                        <img src="/logo.png" alt="FOF Logo" className="w-auto h-auto max-w-[160px] max-h-[160px] drop-shadow-2xl animate-in fade-in zoom-in duration-700" />
+                        <img src={`${import.meta.env.BASE_URL}logo.png`} alt="FOF Logo" className="w-auto h-auto max-w-[160px] max-h-[160px] drop-shadow-2xl animate-in fade-in zoom-in duration-700" />
                     </div>
                     <h1 className="text-3xl font-black text-white uppercase tracking-wider font-tech mb-2">Accès Sécurisé</h1>
                     <p className="text-slate-500 font-mono text-xs uppercase tracking-widest">Base de Données Forces Spéciales</p>

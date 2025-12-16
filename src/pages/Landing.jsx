@@ -19,7 +19,7 @@ export default function Landing() {
             <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-slate-950/90 backdrop-blur-md border-b border-white/5 py-4' : 'bg-transparent py-6'}`}>
                 <div className="container mx-auto px-6 flex justify-between items-center">
                     <div className="flex items-center gap-3">
-                        <img src="/logo.png" alt="FOF" className="h-10 w-auto object-contain" />
+                        <img src={`${import.meta.env.BASE_URL}logo.png`} alt="FOF" className="h-10 w-auto object-contain" />
                         <span className="font-tech text-lg tracking-widest font-bold text-white hidden md:block">FOF <span className="text-blue-500">INTRA</span></span>
                     </div>
                     <button
@@ -41,18 +41,18 @@ export default function Landing() {
                     <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
                 </div>
 
-                <div className="relative z-10 max-w-5xl mx-auto flex flex-col items-center">
+                <div className="relative z-10 max-w-5xl mx-auto flex flex-col items-center w-full">
                     {/* Logo - Aspect Ratio Fixed */}
                     <div className="mb-8 relative group">
                         <div className="absolute inset-0 bg-blue-600/20 blur-[80px] rounded-full opacity-60 animate-pulse"></div>
                         <img
-                            src="/logo.png"
+                            src={`${import.meta.env.BASE_URL}logo.png`}
                             alt="FOF Logo"
                             className="relative z-10 h-40 md:h-64 w-auto object-contain drop-shadow-2xl animate-in fade-in zoom-in duration-1000"
                         />
                     </div>
 
-                    <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-6 font-tech text-white leading-tight">
+                    <h1 className="text-3xl sm:text-4xl md:text-8xl font-black uppercase tracking-tighter mb-6 font-tech text-white leading-tight break-words w-full max-w-[100vw]">
                         Force Opérationnelle <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">Française</span>
                     </h1>
@@ -176,7 +176,7 @@ export default function Landing() {
             <footer className="py-12 bg-[#01040f] border-t border-white/5 text-center md:text-left">
                 <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
                     <div className="flex items-center gap-3 opacity-50 hover:opacity-100 transition-opacity">
-                        <img src="/logo.png" alt="FOF" className="h-8 w-auto grayscale" />
+                        <img src={`${import.meta.env.BASE_URL}logo.png`} alt="FOF" className="h-8 w-auto grayscale" />
                         <span className="font-tech text-sm tracking-widest text-slate-400 font-bold">FORCE OPÉRATIONNELLE FRANÇAISE</span>
                     </div>
                     <div className="text-slate-600 text-xs font-mono uppercase tracking-widest">
